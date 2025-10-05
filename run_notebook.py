@@ -82,7 +82,7 @@ def run_all_notebooks():
             successful += 1
 
     print(
-        f"\n📈 Results: {successful}/{len(results)} notebooks executed successfully"
+        f"\n📈 Results: {successful}/{len(results)} notebooks " f"executed successfully"
     )
 
     return successful == len(results)

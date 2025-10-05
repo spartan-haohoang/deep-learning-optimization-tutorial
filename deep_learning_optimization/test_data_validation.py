@@ -2,16 +2,19 @@
 Tests for data validation functionality.
 """
 
-import pytest
-import pandas as pd
-from pathlib import Path
 import sys
+from pathlib import Path
+
+import pandas as pd
 
 # Add project root to path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from scripts.validate_data import validate_iris_data, validate_root_cause_data
+from scripts.validate_data import (  # noqa: E402
+    validate_iris_data,
+    validate_root_cause_data,
+)
 
 
 class TestDataValidation:

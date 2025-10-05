@@ -2,11 +2,11 @@
 Tests for model utility functions.
 """
 
-import pytest
+import sys
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
-from pathlib import Path
-import sys
 
 # Add project root to path
 project_root = Path(__file__).parent.parent
@@ -67,7 +67,8 @@ class TestModelFunctions:
 
     def test_model_configuration(self):
         """Test model configuration structure."""
-        # This would test the base_model_config function if extracted to a module
+        # This would test the base_model_config function
+        # if extracted to a module
         expected_keys = [
             "HIDDEN_NODES",
             "HIDDEN_ACTIVATION",
@@ -128,7 +129,8 @@ class TestModelFunctions:
         learning_rate = 0.001
 
         for optimizer_name in optimizers:
-            # Mock test - in real implementation would test actual optimizer creation
+            # Mock test - in real implementation would test actual
+            # optimizer creation
             assert (
                 optimizer_name in optimizers
             ), f"Optimizer {optimizer_name} should be supported"

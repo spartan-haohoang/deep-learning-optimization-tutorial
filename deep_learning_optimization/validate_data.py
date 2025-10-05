@@ -5,9 +5,10 @@ Validates that all required data files are present and properly formatted.
 """
 
 import os
-import pandas as pd
 import sys
 from pathlib import Path
+
+import pandas as pd
 
 
 def validate_iris_data():
@@ -36,7 +37,12 @@ def validate_iris_data():
             return False
 
         # Check data types and ranges
-        numeric_columns = ["Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"]
+        numeric_columns = [
+            "Sepal.Length",
+            "Sepal.Width",
+            "Petal.Length",
+            "Petal.Width",
+        ]
         for col in numeric_columns:
             if not pd.api.types.is_numeric_dtype(df[col]):
                 print(f"❌ Iris dataset column '{col}' is not numeric")
@@ -47,11 +53,14 @@ def validate_iris_data():
         actual_species = set(df["Species"].unique())
         if not actual_species.issubset(valid_species):
             print(
-                f"❌ Iris dataset contains invalid species: {actual_species - valid_species}"
+                f"❌ Iris dataset contains invalid species: "
+                f"{actual_species - valid_species}"
             )
             return False
 
-        print(f"✅ Iris dataset validated: {len(df)} rows, {len(df.columns)} columns")
+        print(
+            f"✅ Iris dataset validated: {len(df)} rows, " f"{len(df.columns)} columns"
+        )
         return True
 
     except Exception as e:
@@ -109,12 +118,14 @@ def validate_root_cause_data():
         actual_causes = set(df["ROOT_CAUSE"].unique())
         if not actual_causes.issubset(valid_causes):
             print(
-                f"❌ Root cause dataset contains invalid causes: {actual_causes - valid_causes}"
+                f"❌ Root cause dataset contains invalid causes: "
+                f"{actual_causes - valid_causes}"
             )
             return False
 
         print(
-            f"✅ Root cause analysis dataset validated: {len(df)} rows, {len(df.columns)} columns"
+            f"✅ Root cause analysis dataset validated: {len(df)} rows, "
+            f"{len(df.columns)} columns"
         )
         return True
 
