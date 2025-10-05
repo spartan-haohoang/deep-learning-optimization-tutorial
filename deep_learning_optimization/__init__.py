@@ -15,7 +15,7 @@ try:
 except ImportError:
     pass
 
-# Import model functions if they exist  
+# Import model functions if they exist
 try:
     from .model_functions import *
 except ImportError:
