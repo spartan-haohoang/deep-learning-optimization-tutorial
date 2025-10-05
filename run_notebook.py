@@ -4,11 +4,10 @@ Notebook execution script for Deep Learning Optimization Tutorial
 Allows running Jupyter notebooks programmatically for automated testing.
 """
 
-import os
-import sys
-import subprocess
 import argparse
+import sys
 from pathlib import Path
+
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
 
@@ -82,7 +81,9 @@ def run_all_notebooks():
         if success:
             successful += 1
 
-    print(f"\n📈 Results: {successful}/{len(results)} notebooks executed successfully")
+    print(
+        f"\n📈 Results: {successful}/{len(results)} notebooks executed successfully"
+    )
 
     return successful == len(results)
 
@@ -104,15 +105,17 @@ def main():
         help="Execution timeout in seconds (default: 600)",
     )
     parser.add_argument(
-        "--kernel", default="python3", help="Kernel name to use (default: python3)"
+        "--kernel",
+        default="python3",
+        help="Kernel name to use (default: python3)",
     )
 
     args = parser.parse_args()
 
-    # Change to project root directory
-    script_dir = Path(__file__).parent
-    project_root = script_dir.parent
-    os.chdir(project_root)
+    # Use current directory as project root
+    # script_dir = Path(__file__).parent
+    # project_root = script_dir.parent
+    # os.chdir(project_root)
 
     if args.notebook:
         # Run specific notebook
